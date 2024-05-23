@@ -9,7 +9,7 @@ import Cart from './Components/Cart/Cart';
 import Categories from './Components/Categories/Categories';
 import Brands from './Components/Brands/Brands';
 import NotFound from "./Components/NotFound/NotFound";
-
+import Articles from "./Components/Articles/Articles";
 
 let routers = createBrowserRouter([
   {path:'' , element: <Layout />, children: [
@@ -19,6 +19,7 @@ let routers = createBrowserRouter([
       {path: 'register', element: <Register />},
       {path: 'categories', element: <Categories />},
       {path: 'brands', element: <Brands />},
+      {path: 'blog', element: <Articles />},
       {path: '*', element: <NotFound />}
   ]}
 ])

@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "id": "a730",
+      "title": "rest",
+      "description": "go to bed"
+    },
+    {
+      "id": "fd9c",
+      "title": "php",
+      "description": "learn php"
+    },
+    {
+      "id": "c8a3",
+      "title": "c#",
+      "description": "learn c#"
+    }
+  ]
+}
