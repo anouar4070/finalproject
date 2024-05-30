@@ -10,6 +10,7 @@ import Categories from './Components/Categories/Categories';
 import Brands from './Components/Brands/Brands';
 import NotFound from "./Components/NotFound/NotFound";
 import Articles from "./Components/Articles/Articles";
+import CounterContextProvider from "./Context/CounterContext.js";
 
 let routers = createBrowserRouter([
   {path:'' , element: <Layout />, children: [
@@ -27,9 +28,11 @@ let routers = createBrowserRouter([
 
 const App = () => {
   return (
+    <CounterContextProvider>
    <RouterProvider router={routers}>
 
    </RouterProvider>
+   </CounterContextProvider>
   );
 };
 

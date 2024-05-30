@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -14,17 +15,50 @@ const Articles = () => {
   };
 
   const deleteArticles = async (id) => {
+  // if( !window.confirm("are you sure to delete")) {
+  //   return
+  // }
+
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to delete this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then(async(result) => {
+
     try {
-      const response = await axios.delete(
-        `http://localhost:4000/articles/${id}`
-      );
-      if (response.status === 200) {
-        setArticles(articles.filter((article) => article.id !== id));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+         if(result.isConfirmed){
+          const response = await axios.delete(
+            `http://localhost:4000/articles/${id}`
+          );
+          if (response.status === 200) {
+            setArticles(articles.filter((article) => article.id !== id));
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success"
+              });
+            }
+
+            }
+          
+          }
+        } catch (error) {
+          console.error(error);
+        }
+ 
+
+   
+  });}
+
+
+
+
 
   useEffect(() => {
     getAllArticles();
